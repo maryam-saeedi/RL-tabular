@@ -50,11 +50,11 @@ class TreeBackup(Base):
                             G_new+=self.DISCOUNT*self.getPolicy(S[k],a)*self.Q[S[k],a]
                     G_new+=self.DISCOUNT*self.getPolicy(S[k],A[k])*G
                     G = G_new
-                Q[S[tau], A[tau]] += (self.LEARNING_RATE * (G-self.Q[S[tau],A[tau]]))
+                self.Q[S[tau], A[tau]] += (self.LEARNING_RATE * (G-self.Q[S[tau],A[tau]]))
 
             if tau == T-1:
                 break
                 
             t+=1
-            
+
         return totral_reward/iterations
